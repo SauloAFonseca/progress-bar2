@@ -6,6 +6,7 @@ const progressSteps = document.querySelectorAll(".progress-step");
 
 let formStepsNum = 0;
 
+// ************* controla eventos do botao adicionar **************
 nextBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
     formStepsNum++;
@@ -14,6 +15,7 @@ nextBtns.forEach((btn) => {
   });
 });
 
+// *********** controla eventos do botao voltar ***************
 prevBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
     formStepsNum--;
@@ -22,6 +24,7 @@ prevBtns.forEach((btn) => {
   });
 });
 
+// ********** atualiza etapas do formulario ************
 function updateFormSteps() {
   formSteps.forEach((formStep) => {
     formStep.classList.contains("form-step-active") &&
@@ -31,6 +34,7 @@ function updateFormSteps() {
   formSteps[formStepsNum].classList.add("form-step-active");
 }
 
+// ************ atualiza a barra de progresso ***********
 function updateProgressbar() {
   progressSteps.forEach((progressStep, idx) => {
     if (idx < formStepsNum + 1) {
@@ -40,8 +44,30 @@ function updateProgressbar() {
     }
   });
 
+  // ******** manipula a barra de progresso do bootstrap *******
   const progressActive = document.querySelectorAll(".progress-step-active");
 
   progress.style.width =
     ((progressActive.length - 1) / (progressSteps.length - 1)) * 100 + "%";
 }
+
+
+// $(document).ready(function() {  
+  //   windowWidth = window.innerWidth;
+  
+  //   if(windowWidth <= 900) {
+  //     $('.progress-step').removeAttr('data-title');
+  //   }
+      
+  
+  //   function onResize(){
+  //     windowWidth = window.innerWidth;
+  
+  //     if(windowWidth <= 900) {
+  //       $('.progress-step').removeAttr('data-title');
+  //     }
+  // }
+  
+  // $(window).on('resize', onResize);
+  
+  // })
